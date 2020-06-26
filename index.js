@@ -4,9 +4,10 @@ var ctx = canvas.getContext("2d");
 var screenWidth = 600;
 var screenHeight = 400;
 var fields = [];
+var generating = false;
 
 // coordinates initalisaton
-var dimenzija_polja = 20;
+var dimenzija_polja = 10;
 var stevilo_polj_x = (screenWidth / dimenzija_polja);
 var stevilo_polj_y = (screenHeight / dimenzija_polja);
 
@@ -111,9 +112,9 @@ function getCursorPosition(canvas, event) {
     polje.print();
   }
 
-  console.log(fields);
-
   drawField();
+
+  $("#generate-btn").prop('disabled', false);
 
 }
 
@@ -121,7 +122,11 @@ function getCursorPosition(canvas, event) {
  * function for starting an evolution 
  */
 async function generate() {
-  while (true) {
+  generating = true;
+
+  document.getElementById("generate-btn").disabled = true;
+  document.getElementById("stop-btn").disabled = false;
+  while (generating) {
     var new_fields = [];
     var candidates = [];
 
@@ -213,8 +218,25 @@ async function generate() {
 
     console.log(fields);
 
-    await new Promise(r => setTimeout(r, 250));
+    await new Promise(r => setTimeout(r, 100));
   }
+}
+
+function stop() {
+  console.log("Stoping");
+  generating = false;
+
+  $("#stop-btn").prop('disabled', true);
+  $("#generate-btn").prop('disabled', false);
+}
+
+function clean_field() {
+
+  console.log("Cleaning");
+  stop();
+
+  fields = [];
+  drawField();
 }
 
 /**

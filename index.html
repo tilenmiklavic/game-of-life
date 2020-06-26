@@ -4,12 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script defer src="index.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <canvas id="myCanvas" width="600px" height="400px"></canvas>
-  <button onclick="generate()">Generate</button>
+  <div class="container">
+    <h1>Game of Life</h1>
+    <br>
+  </div>
+  <div class="container">
+    <canvas id="myCanvas" width="600px" height="400px"></canvas>
+  </div>
+  <div class="container">
+    <br>  
+    <button id="generate-btn" class="btn btn-primary" onclick="generate()" disabled>Generate</button>  
+    <button id="stop-btn" class="btn btn-danger" onclick="stop()" disabled>Stop</button>   
+    <button id="clear-btn" class="btn btn-success" onclick="clean_field()">Clear</button>
+  </div>
 </body>
 </html>
