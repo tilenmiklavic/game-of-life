@@ -13,7 +13,9 @@ var stevilo_polj_y = (screenHeight / dimenzija_polja);
 
 // templates
 var glider = [[20,20], [21,20], [22,20], [22,19], [21,18]];
-var templates = [glider];
+var small_exploder = [[20,20], [21,21], [22,20], [20,19], [21,19], [22,19], [21,18]];
+var exploder = [[20,16], [22,16], [24,16], [20,17], [24,17], [20,18], [24,18], [20,19], [24, 19], [20,20], [22,20], [24,20]];
+var templates = [glider, small_exploder, exploder];
 
 var init = [0,0];
 canvas.addEventListener('mousedown', function(e) {
