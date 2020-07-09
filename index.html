@@ -15,13 +15,33 @@
     <br>
   </div>
   <div class="container">
-    <canvas id="myCanvas" width="600px" height="400px"></canvas>
-  </div>
-  <div class="container">
-    <br>  
-    <button id="generate-btn" class="btn btn-primary" onclick="generate()" disabled>Generate</button>  
-    <button id="stop-btn" class="btn btn-danger" onclick="stop()" disabled>Stop</button>   
-    <button id="clear-btn" class="btn btn-success" onclick="clean_field()">Clear</button>
+    <div >
+      <div class="col-8">
+        <div class="container">
+          <canvas id="myCanvas" width="600px" height="400px"></canvas>
+        </div>
+        <div class="container">
+          <br>  
+          <button id="generate-btn" class="btn btn-primary" onclick="generate(1)" disabled>Generate</button>  
+          <button id="stop-btn" class="btn btn-danger" onclick="stop()" disabled>Stop</button>   
+          <button id="clear-btn" class="btn btn-success" onclick="clean_field()">Clear</button>
+          <button id="fields-btn" class="btn btn-primary" onclick="status()">Fields status</button>
+          <button id="step-btn" class="btn btn-primary" onclick="generate(100)">Step</button>
+        </div>
+      </div>
+      <div class="col-3">
+        <h2>Templates</h2>
+        <div class="container" onclick="template(0)">
+          <h3>Glider</h3>
+        </div>
+        <div class="container">
+          <h3>Small Exploder</h3>
+        </div>
+        <div class="container">
+          <h3>Exploder</h3>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

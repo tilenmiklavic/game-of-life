@@ -11,6 +11,9 @@ var dimenzija_polja = 10;
 var stevilo_polj_x = (screenWidth / dimenzija_polja);
 var stevilo_polj_y = (screenHeight / dimenzija_polja);
 
+// templates
+var glider = [[20,20], [21,20], [22,20], [22,19], [21,18]];
+var templates = [glider];
 
 var init = [0,0];
 canvas.addEventListener('mousedown', function(e) {
@@ -121,7 +124,9 @@ function getCursorPosition(canvas, event) {
 /**
  * function for starting an evolution 
  */
-async function generate() {
+async function generate(indicator) {
+
+  console.log(fields); 
   generating = true;
 
   document.getElementById("generate-btn").disabled = true;
@@ -219,6 +224,10 @@ async function generate() {
     console.log(fields);
 
     await new Promise(r => setTimeout(r, 100));
+
+    if (indicator == 100) {
+      break;
+    }
   }
 }
 
@@ -237,6 +246,8 @@ function clean_field() {
 
   fields = [];
   drawField();
+
+  console.log(fields);
 }
 
 /**
@@ -308,6 +319,37 @@ function existing_field(x, y) {
   }
 
   return false;
+}
+
+/**
+ * function for adding fields from a saved template 
+ */
+function template(index) {
+
+  console.log("template");
+
+  for (var i = 0; i < templates[index].length; i++) {
+    var polje = new Polje(templates[index][i][0], templates[index][i][1], true);
+    console.log("New field added");
+
+    fields.push(polje);
+
+    recunt(polje, true);
+
+  }
+
+  $("#generate-btn").prop('disabled', false);
+  console.log(fields);
+
+  drawField();
+}
+
+function status() {
+  console.log(fields);
+}
+
+function step() {
+
 }
 
 /**
