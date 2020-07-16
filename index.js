@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 var screenWidth = 600;
 var screenHeight = 400;
 var fields = [];
+var number_of_blocks = 0;
 var generating = false;
 
 // coordinates initalisaton
@@ -21,6 +22,8 @@ var init = [0,0];
 canvas.addEventListener('mousedown', function(e) {
   getCursorPosition(canvas, e)
 })
+
+
 
 // draw the inital field 
 drawField();
@@ -76,6 +79,8 @@ function drawField() {
     curr[0] = init[0];
 
   }
+
+  reset_num_fields();
 }
 
 /**
@@ -115,6 +120,9 @@ function getCursorPosition(canvas, event) {
     fields.push(polje);
     recunt(polje, true);
     polje.print();
+
+    // reset status field
+    reset_num_fields();
   }
 
   drawField();
@@ -134,6 +142,13 @@ async function generate(indicator) {
   document.getElementById("generate-btn").disabled = true;
   document.getElementById("stop-btn").disabled = false;
   while (generating) {
+
+    // case where we run out of the fields or there was blank input
+    if (fields.length == 0) {
+      stop();
+      break;
+    }
+
     var new_fields = [];
     var candidates = [];
 
@@ -249,6 +264,7 @@ function clean_field() {
   fields = [];
   drawField();
 
+
   console.log(fields);
 }
 
@@ -310,6 +326,8 @@ function recount_on_removed(x, y) {
 
     }
   }
+
+  reset_num_fields();
 }
 
 function existing_field(x, y) {
@@ -350,9 +368,13 @@ function status() {
   console.log(fields);
 }
 
-function step() {
-
+/**
+ * function for recounting new number of fields on the board
+ */
+function reset_num_fields() {
+  $("#block-num-span").text(fields.length);
 }
+
 
 /**
  * constructor for creating selected fields
