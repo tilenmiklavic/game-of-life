@@ -1,39 +1,35 @@
-canvas {
-  border: 1px solid;
+#grid {
+  /* background-color: red; */
+  flex-grow: 4;
+  display: grid;
+  /* gap: 2%; */
 }
 
- /* Remove the navbar's default margin-bottom and rounded borders */ 
- .navbar {
-  margin-bottom: 0;
-  border-radius: 0;
+.view {
+  /* background-color: blue; */
+  flex-grow: 1;
 }
 
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 1000px}
-
-/* Set gray background color and 100% height */
-.sidenav {
-  padding-top: 20px;
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  /* background-color: green; */
   height: 100%;
 }
 
-/* Set black background color, white text and some padding */
-footer {
-  background-color: #f1f1f1 ;
-  color: white;
-  padding: 15px;
-  bottom: 0px;
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
 
-.mainframe {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-  .sidenav {
-    height: auto;
-    padding: 15px;
-  }
-  .row.content {height:auto;} 
+.square {
+  width: 28px;
+  aspect-ratio: 1/ 1;
+  display: flex;
+  align-items: center;
+  /* padding: 5%; */
+  border: #000 solid 1px;
+  /* background-color: #1e1e1e; */
+  /* color: #fff; */
 }
